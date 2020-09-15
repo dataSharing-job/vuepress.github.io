@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>websocket学习笔记 | 资料笔记记录</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    <link rel="icon" href="/vuepress.github.io/book.png">
+    <meta name="description" content="用于资料笔记">
+    <link rel="preload" href="/vuepress.github.io/assets/css/0.styles.377ad70f.css" as="style"><link rel="preload" href="/vuepress.github.io/assets/js/app.95f72ce3.js" as="script"><link rel="preload" href="/vuepress.github.io/assets/js/2.2d95e3b9.js" as="script"><link rel="preload" href="/vuepress.github.io/assets/js/6.d8e78f71.js" as="script"><link rel="prefetch" href="/vuepress.github.io/assets/js/3.11572a76.js"><link rel="prefetch" href="/vuepress.github.io/assets/js/4.1cfc2f80.js"><link rel="prefetch" href="/vuepress.github.io/assets/js/5.3702f548.js"><link rel="prefetch" href="/vuepress.github.io/assets/js/7.b1a56b4b.js"><link rel="prefetch" href="/vuepress.github.io/assets/js/8.6bbe5d6a.js">
+    <link rel="stylesheet" href="/vuepress.github.io/assets/css/0.styles.377ad70f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepress.github.io/" class="home-link router-link-active"><img src="/vuepress.github.io/book.png" alt="资料笔记记录" class="logo"> <span class="site-name can-hide">资料笔记记录</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepress.github.io/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow down"></span></button> <button type="button" aria-label="分类" class="mobile-dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress.github.io/pages/introduction/vuepress.html" class="nav-link">
+  序言
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress.github.io/pages/interview/frontEnd20200824.html" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress.github.io/pages/communication/webscoket.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  通讯
+</a></li></ul></div></div><div class="nav-item"><a href="/vuepress.github.io/pages/communication/.html" class="nav-link">
+  功能演示
+</a></div><div class="nav-item"><a href="https://github.com/dataSharing-job/noteRecord" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/vuepress.github.io/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow down"></span></button> <button type="button" aria-label="分类" class="mobile-dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress.github.io/pages/introduction/vuepress.html" class="nav-link">
+  序言
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress.github.io/pages/interview/frontEnd20200824.html" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress.github.io/pages/communication/webscoket.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  通讯
+</a></li></ul></div></div><div class="nav-item"><a href="/vuepress.github.io/pages/communication/.html" class="nav-link">
+  功能演示
+</a></div><div class="nav-item"><a href="https://github.com/dataSharing-job/noteRecord" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>通讯</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vuepress.github.io/pages/communication/webscoket.html" aria-current="page" class="active sidebar-link">websocket原生使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepress.github.io/pages/communication/webscoket.html#websocket学习笔记" class="sidebar-link">websocket学习笔记</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="websocket学习笔记"><a href="#websocket学习笔记" class="header-anchor">#</a> websocket学习笔记</h2> <p>[TOC]</p> <hr> <h3 id="websocket简述"><a href="#websocket简述" class="header-anchor">#</a> websocket简述</h3> <blockquote><p>webscoket 是一种网络通信协议
+websocket 是一种单个 <font color="#DC143C">TCP</font> 连接上 进行 <font color="#DC143C">全双工</font> 通信的协议</p> <ul><li>WebSocket 是独立的、创建在 TCP 上的协议</li> <li>Websocket 通过<font color="#6495ED">HTTP/1.1 协议的101状态码</font> 进行握手</li> <li>为了创建Websocket连接，需要通过浏览器发出请求，之后服务器进行回应，这个过程通常称为 <font color="#6495ED"> “握手”（handshaking）</font></li></ul></blockquote> <p><strong>所有浏览器都已经支持</strong> 属于 <font color="#6495ED">服务器推送技术 </font>的一种。</p> <div class="language- extra-class"><pre><code>**全双工（Full Duplex）**是通讯传输的一个术语。
+通信允许数据在两个方向上同时传输，它在能力上相当于两个单工通信方式的结合。
+全双工指可以同时（瞬时）进行信号的双向传输（A→B且B→A）。
+指A→B的同时B→A，是瞬时同步的。
+
+**单工**就是在只允许甲方向乙方传送信息，而乙方不能向甲方传送，（比喻汽车的单行道。）
+
+                                  ------来自百度维基
+</code></pre></div><blockquote><p>一般的http协议，通信只能由客户端向服务器端发起，无法接受到服务器端传过来的数据；
+而websocket是允许服务端主动给客户端推送数据，在websocketAPI中，客户端只需要和服务器完成一次握手，两者之间就可以创建持久性的连接，实现双向数据传输</p></blockquote> <h3 id="websocket-背景"><a href="#websocket-背景" class="header-anchor">#</a> websocket 背景</h3> <blockquote><p><strong>HTTP</strong>：很多网站为了实现推送技术，所用的技术都是 <font color="#DC143C" face="黑体">轮询</font>。轮询是在特定的的时间间隔（如每1秒），由浏览器对服务器发出HTTP请求，然后由<font color="#DC143C" face="黑体">服务器 返回最新的数据 给 客户端的浏览器</font>。（不知道Websocket之前我都想到的事定时器去发送请求）
+<strong>HTTP缺点</strong>：浏览器需要 <font color="#DC143C" face="黑体"><em><strong>不断的向服务器发出请求</strong></em></font>，然而HTTP请求可能包含较长的头部，其中真正有效的数据可能只是很小的一部分，显然这样会 <font color="#DC143C" face="黑体"> 浪费很多的带宽等资源 </font>。
+<font color="gray" face="黑体">在这种情况下，HTML5定义了WebSocket协议，能更好的节省服务器资源和带宽，并且能够更实时地进行通讯。</font></p></blockquote> <h3 id="websocket-特点"><a href="#websocket-特点" class="header-anchor">#</a> websocket 特点</h3> <ul><li><font color="gray" face="黑体">websocket可以实现客户端和服务端的双向通信，服务器可以主动将消息推送给客户端</font></li> <li><font color="gray" face="黑体">协议标识符是ws（如果加密，则是wss），请求的地址就是后端支持websocket的API。</font></li> <li><font color="gray" face="黑体">建立在 TCP 协议之上，服务器端的实现比较容易</font></li> <li><font color="gray" face="黑体">与 HTTP 协议有着良好的兼容性。默认端口也是80和443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器。</font></li> <li><font color="gray" face="黑体">数据格式比较轻量，性能开销小，通信高效。</font></li> <li><font color="gray" face="黑体">可以发送文本，也可以发送二进制数据。</font></li> <li><font color="gray" face="黑体">没有同源限制，客户端可以与任意服务器通信。</font></li></ul> <blockquote><p>ws://example.com:80/some/path</p></blockquote> <p><img src="https://p-147945.f3.n0.cdn.getcloudapp.com/items/Qwu0new6/bg2017051502.png?source=viewer&amp;v=01881d8f5cd4dc6d8650a6b9f173cb49" alt="bg2017051502"></p> <h3 id="websocket-语法"><a href="#websocket-语法" class="header-anchor">#</a> websocket 语法</h3> <div class="language- extra-class"><pre><code>  Websocket 使用 ws 或 wss 的统一资源标志符，类似于 HTTPS，其中 wss 表示在 TLS 之上的 Websocket。如：
+
+  ws://example.com/wsapi
+  wss://secure.example.com/
+</code></pre></div><blockquote><p>详细websocket API 看这 https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket</p></blockquote> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">var</span> websocket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> <span class="token punctuation">[</span>protocol<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 第一个参数 url, 指定连接的 URL。第二个参数 protocol 是可选的，指定了可接受的子协议。</span>
+<span class="token comment">// 一般ws开头，加密就是wws</span>
+
+例子
+<span class="token keyword">var</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">&quot;ws://localhost:9998/echo&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>一个典型的Websocket握手请求如下：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>
+<span class="token comment">// 客户端请求</span>
+<span class="token constant">GET</span> <span class="token operator">/</span> <span class="token constant">HTTP</span><span class="token operator">/</span><span class="token number">1.1</span>
+Upgrade<span class="token operator">:</span> websocket
+Connection<span class="token operator">:</span> Upgrade
+Host<span class="token operator">:</span> example<span class="token punctuation">.</span>com
+Origin<span class="token operator">:</span> http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>example<span class="token punctuation">.</span>com
+Sec<span class="token operator">-</span>WebSocket<span class="token operator">-</span>Key<span class="token operator">:</span> sN9cRrP<span class="token operator">/</span>n9NdMgdcy2VJFQ<span class="token operator">==</span>
+Sec<span class="token operator">-</span>WebSocket<span class="token operator">-</span>Version<span class="token operator">:</span> <span class="token number">13</span>
+
+<span class="token comment">// 服务器回应</span>
+<span class="token constant">HTTP</span><span class="token operator">/</span><span class="token number">1.1</span> <span class="token number">101</span> Switching Protocols
+Upgrade<span class="token operator">:</span> websocket
+Connection<span class="token operator">:</span> Upgrade
+Sec<span class="token operator">-</span>WebSocket<span class="token operator">-</span>Accept<span class="token operator">:</span> fFBooB7FAkLlXgRSz0BT3v4hq5s<span class="token operator">=</span>
+Sec<span class="token operator">-</span>WebSocket<span class="token operator">-</span>Location<span class="token operator">:</span> ws<span class="token operator">:</span><span class="token operator">/</span><span class="token regex">/example.com/</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h5 id="常量-websocket-readystate-只读属性-连接状态"><a href="#常量-websocket-readystate-只读属性-连接状态" class="header-anchor">#</a> 常量   websocket.readyState   (只读属性，连接状态)</h5> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token operator">-</span> WebSocket<span class="token punctuation">.</span><span class="token constant">CONNECTING</span> <span class="token operator">-</span>Value <span class="token number">0</span> <span class="token operator">-</span> 表示尚未建立连接
+<span class="token operator">-</span> WebSocket<span class="token punctuation">.</span><span class="token constant">OPEN</span> <span class="token operator">-</span>Value <span class="token number">1</span> <span class="token operator">-</span> 表示连接已经建立，可以进行通信
+<span class="token operator">-</span> WebSocket<span class="token punctuation">.</span><span class="token constant">CLOSING</span> <span class="token operator">-</span>Value <span class="token number">2</span> <span class="token operator">-</span> 表示连接正在进行关闭
+<span class="token operator">-</span> WebSocket<span class="token punctuation">.</span><span class="token constant">CLOSED</span> <span class="token operator">-</span>Value <span class="token number">3</span> <span class="token operator">-</span> 表示连接已经关闭或者连接不能打开
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><div class="language-js line-numbers-mode"><pre class="language-js"><code>  <span class="token comment">// 用法</span>
+  <span class="token keyword">var</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">'服务器端地址'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>ws<span class="token punctuation">.</span>readyState <span class="token operator">===</span> WebSocket<span class="token punctuation">.</span><span class="token constant">CONNECTING</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 尚未建立连接</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>ws<span class="token punctuation">.</span>readyState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> WebSocket<span class="token punctuation">.</span><span class="token constant">CONNECTING</span><span class="token operator">:</span>
+      <span class="token comment">// do something</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> WebSocket<span class="token punctuation">.</span><span class="token constant">OPEN</span><span class="token operator">:</span>
+      <span class="token comment">// do something</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> WebSocket<span class="token punctuation">.</span><span class="token constant">CLOSING</span><span class="token operator">:</span>
+      <span class="token comment">// do something</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> WebSocket<span class="token punctuation">.</span><span class="token constant">CLOSED</span><span class="token operator">:</span>
+      <span class="token comment">// do something</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">default</span><span class="token operator">:</span>
+      <span class="token comment">// this never happens</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h5 id="websocket方法-close-send"><a href="#websocket方法-close-send" class="header-anchor">#</a> websocket方法 （close，send）</h5> <div class="language-js line-numbers-mode"><pre class="language-js"><code>  WebSocket<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">[</span>code<span class="token punctuation">[</span><span class="token punctuation">,</span> reason<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token comment">// 关闭当前链接。</span>
+  WebSocket<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+  <span class="token comment">// 对要传输的数据进行排队。</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h6 id="发送send例子"><a href="#发送send例子" class="header-anchor">#</a> 发送send例子</h6> <ul><li>发送文本</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code>  <span class="token comment">// 发送文本</span>
+  ws<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'文本信息'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>blob对象</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code>  <span class="token comment">// 发送 Blob 对象的例子。</span>
+  <span class="token keyword">var</span> file <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'input[type=&quot;file&quot;]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>files<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  ws<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>ArrayBuffer 对象</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code>  <span class="token comment">// Sending canvas ImageData as ArrayBuffer</span>
+  <span class="token keyword">var</span> img <span class="token operator">=</span> canvas_context<span class="token punctuation">.</span><span class="token function">getImageData</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">320</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> binary <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>img<span class="token punctuation">.</span>data<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> img<span class="token punctuation">.</span>data<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    binary<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> img<span class="token punctuation">.</span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  ws<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>binary<span class="token punctuation">.</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h5 id="websocket事件"><a href="#websocket事件" class="header-anchor">#</a> websocket事件</h5> <blockquote><p>使用 <font color="#6495ED" face="黑体">addEventListener()</font>  或将一个事件监听器赋值给本接口的 <font color="#6495ED" face="黑体">oneventname</font> 属性，来监听下面的事件。</p></blockquote> <div class="language-js line-numbers-mode"><pre class="language-js"><code>close
+<span class="token comment">// 当一个 WebSocket 连接被关闭时触发。</span>
+<span class="token comment">// 也可以通过 onclose 属性来设置。</span>
+
+error
+<span class="token comment">// 当一个 WebSocket 连接因错误而关闭时触发，例如无法发送数据时。</span>
+<span class="token comment">// 也可以通过 onerror 属性来设置.</span>
+
+message
+<span class="token comment">// 当通过 WebSocket 收到数据时触发。</span>
+<span class="token comment">// 也可以通过 onmessage 属性来设置。</span>
+
+open
+<span class="token comment">// 当一个 WebSocket 连接成功时触发。</span>
+<span class="token comment">// 也可以通过 onopen 属性来设置。</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><div class="language-js line-numbers-mode"><pre class="language-js"><code>例子：
+<span class="token comment">// Create WebSocket connection.</span>
+<span class="token keyword">const</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">'ws://localhost:8080'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ws 连接成功时触发</span>
+ws<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'open'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  ws<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Hello Server!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//发送</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ws 收到数据时触发</span>
+ws<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'message'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 接受到后台的数据处理</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h5 id="websocket属性"><a href="#websocket属性" class="header-anchor">#</a> websocket属性</h5> <ul><li><p><font color="orange" face="黑体">WebSocket.binaryType</font> <font color="gray" face="黑体">使用二进制的数据类型连接。</font></p></li> <li><p><font color="orange" face="黑体">WebSocket.bufferedAmount</font> <font color="#6495ED">只读</font> <font color="gray" face="黑体">未发送至服务器的字节数。 实例对象的bufferedAmount属性，表示还有多少字节的二进制数据没有发送出去。它可以用来判断发送是否结束。</font></p></li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// WebSocket.bufferedAmount</span>
+    <span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">10000000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ws<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>ws<span class="token punctuation">.</span>bufferedAmount <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 发送完毕</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 发送还没结束</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li><font color="orange" face="黑体">WebSocket.extensions</font> <font color="#6495ED">只读</font> <font color="gray" face="黑体">服务器选择的扩展。</font></li> <li><font color="orange" face="黑体">WebSocket.onclose</font> <font color="gray" face="黑体">用于指定连接关闭后的回调函数。</font></li> <li><font color="orange" face="黑体">WebSocket.onerror</font> <font color="gray" face="黑体">用于指定连接失败后的回调函数。</font></li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code>ws<span class="token punctuation">.</span><span class="token function-variable function">onerror</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// handle error event</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+ws<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">&quot;error&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// handle error event</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li><font color="orange" face="黑体">WebSocket.onmessage</font> <font color="gray" face="黑体">用于指定当从服务器接受到信息时的回调函数。</font></li> <li><font color="orange" face="黑体">WebSocket.onopen</font> <font color="gray" face="黑体">用于指定连接成功后的回调函数。</font></li> <li><font color="orange" face="黑体">WebSocket.protocol </font><font color="#6495ED">只读</font> <font color="gray" face="黑体">服务器选择的下属协议。</font></li> <li><font color="orange" face="黑体">WebSocket.readyState</font> <font color="#6495ED">只读</font> <font color="gray" face="黑体">当前的链接状态。</font></li> <li><font color="orange" face="黑体">WebSocket.url</font> <font color="#6495ED">只读</font> <font color="gray" face="黑体">WebSocket 的绝对路径。</font></li></ul> <h3 id="服务器端的实现"><a href="#服务器端的实现" class="header-anchor">#</a> 服务器端的实现</h3> <p>常用的 Node 实现有以下三种。</p> <ul><li>µWebSockets</li> <li>Socket.IO</li> <li>WebSocket-Node</li></ul> <h3 id="websocket-简单用法"><a href="#websocket-简单用法" class="header-anchor">#</a> websocket 简单用法</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code>
+    <span class="token keyword">var</span> websocket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span>wsurl<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">&quot;http&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;ws&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    websocket<span class="token punctuation">.</span><span class="token function-variable function">onopen</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 连接成功后的回调函数。</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;WebSocket连接成功&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    websocket<span class="token punctuation">.</span><span class="token function-variable function">onerror</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 连接错误后的回调函数。</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;WebSocket连接发生错误&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    websocket<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 收到服务器数据后的回调函数</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;WebSocket收到后台返回的msg e.data&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    websocket<span class="token punctuation">.</span><span class="token function-variable function">onclose</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 连接关闭后的回调函数</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;websocket销毁啦&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><h3 id="websocket-封装-心跳检测"><a href="#websocket-封装-心跳检测" class="header-anchor">#</a> websocket 封装 心跳检测</h3> <div class="language- extra-class"><pre><code>  心跳重连：就是保证客户端和服务器端连接是否存活，避免丢包发生
+
+  心跳检测可以由客户端定时向服务器端发送(send)消息，告诉服务器端我还活着，服务器端收到消息之后返回一个消息，告诉客户端，我们连接没啥问题，放心~
+
+  心跳检测可以检测后端是否连接正常，如果在连接正常（WebSocket.OPEN）的情况下，服务端没有在设定的时间内返回特定消息，说明后端连接异常，当前连接不可用，客户端可以尝试重新建立ws连接；
+</code></pre></div><blockquote><p><strong>前端断开</strong>
+在使用websocket过程中，可能会出现网络断开的情况，比如信号不好，或者网络临时关闭，这时候websocket的连接已经断开，而不同浏览器有不同的机制，触发onclose的时机也不同，并不会理想执行websocket的onclose方法，我们无法知道是否断开连接，也就无法进行重连操作。</p></blockquote> <blockquote><p><strong>后端断开</strong>
+如果后端因为一些情况需要断开ws，在可控情况下，会下发一个断连的消息通知，之后才会断开，我们便会重连。
+如果因为一些异常断开了连接，我们是不会感应到的，所以如果我们发送了心跳一定时间之后，后端既没有返回心跳响应消息，前端又没有收到任何其他消息的话，我们就能断定后端主动断开了。</p></blockquote> <p>因此需要一种机制来检测客户端和服务端是否处于正常连接的状态。通过在指定时间间隔发送心跳包来保证连接正常，如果连接出现问题，就需要手动触发onclose事件，这时候便可进行重连操作。因此websocket心跳重连就应运而生。
+参考连接： https://www.cnblogs.com/buxiugangzi/p/11379883.html</p> <div class="language- extra-class"><pre><code>  具体封装在websocket.js里面（经过测定，还存在一些小问题，使用过程中进行更新）
+</code></pre></div><h3 id="websocket-在vue中全局使用"><a href="#websocket-在vue中全局使用" class="header-anchor">#</a> websocket 在vue中全局使用</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// socket.js</span>
+<span class="token keyword">import</span> store <span class="token keyword">from</span> <span class="token string">'@/store/index.js'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>
+  Notification<span class="token punctuation">,</span>
+  Message
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'element-ui'</span>
+<span class="token punctuation">.</span>
+<span class="token punctuation">.</span>
+<span class="token punctuation">.</span>
+<span class="token keyword">function</span> <span class="token function">sendWebsocket</span><span class="token punctuation">(</span><span class="token parameter">wsurl<span class="token punctuation">,</span> agentData</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  wsURL <span class="token operator">=</span> wsurl
+  <span class="token function">wsInitEvent</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token function">sendWS</span><span class="token punctuation">(</span>agentData<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">closeWebsocket</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>websock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    websock<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 关闭websocket</span>
+    websock<span class="token punctuation">.</span><span class="token function">onclose</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 关闭websocket</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  sendWebsocket<span class="token punctuation">,</span>
+  closeWebsocket
+<span class="token punctuation">}</span>
+<span class="token comment">// 详细看socket.js</span>
+
+<span class="token comment">// main.js</span>
+<span class="token keyword">import</span> <span class="token constant">WS</span> <span class="token keyword">from</span> <span class="token string">'./utils/socket.js'</span>
+<span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$socket <span class="token operator">=</span> <span class="token constant">WS</span><span class="token punctuation">;</span>
+
+<span class="token comment">//index.vue</span>
+$<span class="token keyword">this</span><span class="token punctuation">.</span>$socket<span class="token punctuation">.</span><span class="token function">sendWebsocket</span><span class="token punctuation">(</span>wsurl<span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">)</span>
+$<span class="token keyword">this</span><span class="token punctuation">.</span>$socket<span class="token punctuation">.</span><span class="token function">closeWebsocket</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div><h3 id="socket-js-代码详细"><a href="#socket-js-代码详细" class="header-anchor">#</a> socket.js 代码详细</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">import</span> store <span class="token keyword">from</span> <span class="token string">'@/store/index.js'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>
+  Notification<span class="token punctuation">,</span>
+  Message
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'element-ui'</span>
+<span class="token keyword">const</span> userStorage <span class="token operator">=</span> sessionStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'access-token'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// token</span>
+<span class="token keyword">var</span> websock <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// ws对象</span>
+<span class="token keyword">var</span> readyConnect <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> reConnectTimer <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> wsURL <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> lockReconnect <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">wsInitEvent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token punctuation">(</span>WebSocket<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">Notification</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      title<span class="token operator">:</span> <span class="token string">'警告'</span><span class="token punctuation">,</span>
+      message<span class="token operator">:</span> <span class="token string">'您的浏览器不支持WebSocket，无法获取数据'</span><span class="token punctuation">,</span>
+      type<span class="token operator">:</span> <span class="token string">'warning'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>userStorage <span class="token operator">!==</span> <span class="token string">''</span> <span class="token operator">&amp;&amp;</span> userStorage <span class="token operator">!==</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 登录状态下</span>
+    websock <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span>wsURL<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">&quot;http&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;ws&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    websock<span class="token punctuation">.</span>onopen <span class="token operator">=</span> websOnopen<span class="token punctuation">;</span> <span class="token comment">// 连接成功</span>
+    websock<span class="token punctuation">.</span>onerror <span class="token operator">=</span> websOnerror<span class="token punctuation">;</span> <span class="token comment">// 链接错误</span>
+    websock<span class="token punctuation">.</span>onmessage <span class="token operator">=</span> websOnmessage<span class="token punctuation">;</span> <span class="token comment">// 接受信息</span>
+    websock<span class="token punctuation">.</span>onclose <span class="token operator">=</span> websClose<span class="token punctuation">;</span> <span class="token comment">// 链接关闭</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 未登录状态下</span>
+    heartChecked<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>anlisyBtn <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 重新连接</span>
+<span class="token keyword">function</span> <span class="token function">reConnectWS</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>readyConnect<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    lockReconnect <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    reConnectTimer <span class="token operator">&amp;&amp;</span> <span class="token function">clearTimeout</span><span class="token punctuation">(</span>reConnectTimer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    reConnectTimer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">wsInitEvent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      readyConnect <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">5000</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> heartChecked <span class="token operator">=</span> <span class="token punctuation">{</span>
+  heartTime<span class="token operator">:</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">,</span> <span class="token comment">// 1分钟触发一次心跳</span>
+  heartTimeObj<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment">// 心跳倒计时</span>
+  <span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">clearTimeout</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>heartTimeObj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">heartStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> $<span class="token keyword">this</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    $<span class="token keyword">this</span><span class="token punctuation">.</span>heartTimeObj <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// console.log(websock.readyState, 'websock.readyState')</span>
+      <span class="token comment">/**
+       *  0 (WebSocket.CONNECTING)
+          正在链接中
+          1 (WebSocket.OPEN)
+          已经链接并且可以通讯
+          2 (WebSocket.CLOSING)
+          连接正在关闭
+          3 (WebSocket.CLOSED)
+          连接已关闭或者没有链接成功
+       */</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>websock<span class="token punctuation">.</span>readyState <span class="token operator">!==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//否则重连</span>
+        <span class="token function">reConnectWS</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> $<span class="token keyword">this</span><span class="token punctuation">.</span>heartTime<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">sendWS</span><span class="token punctuation">(</span><span class="token parameter">params</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 加延迟是为了尽量让ws连接状态变为OPEN   </span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 添加状态判断，当为OPEN时，发送消息</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>websock<span class="token punctuation">.</span>readyState <span class="token operator">===</span> websock<span class="token punctuation">.</span><span class="token constant">OPEN</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// websock.OPEN = 1 </span>
+      <span class="token comment">// 发给后端的数据需要字符串化</span>
+      websock<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>websock<span class="token punctuation">.</span>readyState <span class="token operator">===</span> websock<span class="token punctuation">.</span><span class="token constant">CLOSED</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// websock.CLOSED = 3 </span>
+      Message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'ws连接异常，请稍候重试'</span><span class="token punctuation">)</span>
+      store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>anlisyBtn <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// console.log('websock.readyState', websock.readyState)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">websOnopen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 连接成功后的回调函数。</span>
+  <span class="token comment">// console.log(&quot;WebSocket连接成功&quot;);</span>
+  heartChecked<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">heartStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">websOnerror</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 错误</span>
+  <span class="token comment">// console.log(&quot;WebSocket连接发生错误&quot;);</span>
+  readyConnect <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  heartChecked<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">heartStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">websOnmessage</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 收到服务器数据后的回调函数。</span>
+  <span class="token keyword">var</span> redata <span class="token operator">=</span> e<span class="token punctuation">.</span>data<span class="token punctuation">;</span> <span class="token comment">//注意：长连接我们是后台直接1秒推送一条数据，</span>
+  store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>webSocketMsg <span class="token operator">=</span> redata<span class="token punctuation">;</span>
+  <span class="token comment">// console.log(e,e.data ,store.state.webSocketMsg, typeof store.state.webSocketMsg,'服务器返回')</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>data <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> redata <span class="token operator">===</span> <span class="token string">&quot;分析完成&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>anlisyBtn <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>anlisyBtn <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">websClose</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 连接关闭后的回调函数</span>
+  <span class="token comment">// e.code === 1000 正常关闭</span>
+  <span class="token comment">// e.code !== 1000 非正常关闭</span>
+  <span class="token comment">// console.log('连接关闭后的回调函数')</span>
+  store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>anlisyBtn <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>e <span class="token operator">&amp;&amp;</span> e<span class="token punctuation">.</span>code <span class="token operator">!==</span> <span class="token number">1000</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">Notification</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      title<span class="token operator">:</span> <span class="token string">'警告'</span><span class="token punctuation">,</span>
+      message<span class="token operator">:</span> <span class="token string">'WebSocket连接异常，请稍候重试'</span><span class="token punctuation">,</span>
+      type<span class="token operator">:</span> <span class="token string">'warning'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>anlisyBtn <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    heartChecked<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">heartStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// console.log('websocket close');</span>
+    store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>anlisyBtn <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    heartChecked<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">sendWebsocket</span><span class="token punctuation">(</span><span class="token parameter">wsurl<span class="token punctuation">,</span> agentData</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  wsURL <span class="token operator">=</span> wsurl
+  <span class="token function">wsInitEvent</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token function">sendWS</span><span class="token punctuation">(</span>agentData<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">closeWebsocket</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>websock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    websock<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 关闭websocket</span>
+    websock<span class="token punctuation">.</span><span class="token function">onclose</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 关闭websocket</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  sendWebsocket<span class="token punctuation">,</span>
+  closeWebsocket
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">9/15/2020, 5:32:29 PM</span></div></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/vuepress.github.io/assets/js/app.95f72ce3.js" defer></script><script src="/vuepress.github.io/assets/js/2.2d95e3b9.js" defer></script><script src="/vuepress.github.io/assets/js/6.d8e78f71.js" defer></script>
+  </body>
+</html>
